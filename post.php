@@ -1,5 +1,5 @@
 <?php
-
+require('query.php');
 
 class Loco_Post {
 
@@ -7,23 +7,32 @@ class Loco_Post {
 
 	}
 
-	function getPosts($pageid) {
-		$pdo = new PDO('mysql:host=localhost;dbname=loco-db','root','');
-		
-		try{
-			$query = $pdo->prepare("SELECT * FROM `loco-post` WHERE `fk_page` = :pageid");
-			$query->bindParam(":pageid", $pageid);
-			$query->execute();
-
-			$results = $query->fetchAll();
-			foreach ($results as $key => $value) {
-				echo($value["data"]);
-			}
-		}catch(PDOException $e) {
-			echo($e->getMessage());
-		}
-
+	function getPosts($pageId) {
+		$all_posts = Loco_Query::getPostsContent($pageId);
+		return $all_posts;
 	}
+
+	function printPosts($posts) {
+
+		$all_posts = self::getPosts($posts);
+
+		if (!empty($all_posts)) {
+			foreach ($all_posts as $key => $value) {
+				echo $value["data"];
+
+				if (isset($_SESSION["user"])) {
+					?>
+					<a href="editor.php?page=<?php echo($value['fk_page']) ?>">[Edit]</a>
+				<?php }
+			}
+		}
+	}
+
+	function getElementByName($element,$field=0) {
+		if(!empty($element))
+			return(Loco_Query::getCertainElement($element,$field));
+	}
+
 }
 
 
