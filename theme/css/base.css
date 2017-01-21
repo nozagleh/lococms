@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+html, body {
+  height: 100%; }
+
+.wrapper {
+  max-width: 1024px;
+  margin: 0 auto; }
+
+.page-wrapper {
+  min-height: 100%;
+  margin-bottom: -120px; }
+
+.header {
+  width: 100%; }
+
+.logo {
+  float: left; }
+
+.main-nav {
+  float: right; }
+  .main-nav li {
+    display: inline-block;
+    list-style-type: none; }
+  .main-nav a {
+    text-decoration: none; }
+
+.clearfix {
+  clear: both; }
+
+footer {
+  height: 120px;
+  background-color: #3a3a3a; }
+
+/*# sourceMappingURL=base.css.map */

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,CAAC;EAAC,MAAM,EAAE,CAAC;EAAE,OAAO,EAAE,CAAC",
+"sources": ["../scss/loco-base.scss"],
+"names": [],
+"file": "loco-base.css"
+}
