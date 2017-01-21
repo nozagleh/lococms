@@ -1,5 +1,6 @@
 <?php
   session_start();
+  require("core/admin-navbar.php");
   if (!isset($_SESSION["user"])) {
     header("location:login.php");
   }
@@ -9,6 +10,6 @@
 
   </head>
   <body>
-    <a href="logout.php">Logout</a>
+    <?php getAdminNav(); ?>
   </body>
 </html>
