@@ -9,7 +9,7 @@
     checkLogin($_POST["username"], $_POST["password"]);
 
   function checkLogin($user, $pass){
-    $is_valid = Query::verifyLogin($user,$pass);
+    $is_valid = Loco_Query::verifyLogin($user,$pass);
 
     if ($is_valid) {
       $_SESSION["user"] = $user;
