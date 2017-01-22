@@ -1,9 +1,10 @@
 <?php
-
   class Loco_Query {
 
     //empty constructor
-    function __construct() {}
+    function __construct() {
+
+    }
 
     /*
     *Function for verifying users
@@ -38,7 +39,7 @@
     }
 
     function getPostsContent($pageid) {
-  		$pdo = new PDO('mysql:host=localhost;dbname=loco-db','root','');
+  		$pdo = new PDO("mysql:dbname=loco-db;host=localhost",'root','');
 
   		try{
   			$query = $pdo->prepare("SELECT * FROM `loco-post` WHERE `fk_page` = :pageid");
@@ -71,6 +72,23 @@
   			return($e->getMessage());
   		}
       return 0;
+    }
+
+    function getAllPages() {
+      $pdo = new PDO('mysql:host=localhost;dbname=loco-db','root','');
+
+      try {
+        $query = $pdo->prepare("SELECT * FROM `loco-page`;");
+        $query->execute();
+
+        $results = $query->fetchAll();
+
+        return $results;
+      } catch (PDOException $e) {
+        return($e->getMessage());
+      }
+
+
     }
 
   }
