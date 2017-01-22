@@ -1,5 +1,8 @@
-<?php require("constants.php"); ?>
+<?php require("constants.php");
+
+function getHead($url) {?>
 <!DOCTYPE html>
   <head>
-      <link rel="stylesheet" type="text/css" href="<?php echo(THEME_STYLES_URL . 'base.css') ?>" />
+      <link rel="stylesheet" type="text/css" href="<?php echo($url . 'base.css') ?>" />
   </head>
+<?php } ?>
