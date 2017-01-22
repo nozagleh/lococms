@@ -87,8 +87,21 @@
       } catch (PDOException $e) {
         return($e->getMessage());
       }
+    }
 
+    function getFrontPosts() {
+      $pdo = new PDO('mysql:host=localhost;dbname=loco-db','root','');
 
+      try {
+        $query = $pdo->prepare("SELECT * FROM `loco-post` INNER JOIN `loco-page` ON `loco-post`.`fk_page` = `loco-page`.`id` WHERE `loco-page`.`is-start` = 1;");
+        $query->execute();
+
+        $results = $query->fetchAll();
+
+        return $results;
+      } catch (PDOException $e) {
+        return($e->getMessage());
+      }
     }
 
   }

@@ -8,13 +8,16 @@ class Loco_Post {
 	}
 
 	function getPosts($pageId) {
-		$all_posts = Loco_Query::getPostsContent($pageId);
-		return $all_posts;
+		return Loco_Query::getPostsContent($pageId);
 	}
 
-	function printPosts($posts) {
+	function getFrontPosts() {
+		return Loco_Query::getFrontPosts();
+	}
 
-		$all_posts = self::getPosts($posts);
+	function printPosts($posts, $is_front=0) {
+
+		$all_posts = ($is_front != 0 ? self::getFrontPosts() : self::getPosts($posts));
 
 		if (!empty($all_posts)) {
 			foreach ($all_posts as $key => $value) {
