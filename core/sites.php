@@ -1,6 +1,10 @@
 <?php
 session_start();
 require('../query.php');
+require("admin-navbar.php");
+require("head.php");
+getHead(ADMIN_THEME_STYLE_URL);
+getAdminNav();
 if(isset($_SESSION["user"])):
  ?>
  <div class="site-list">
