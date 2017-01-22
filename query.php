@@ -15,21 +15,18 @@
         $pdo = new PDO("mysql:dbname=loco-db;host=localhost",'root','');
 
         //prepare the query to check user data, bind parameters
-        $query = $pdo->prepare("SELECT `username`,`passwd` FROM `loco-users` WHERE `username` LIKE :user AND `passwd` LIKE :pass;");
+        $query = $pdo->prepare("SELECT `passwd` FROM `loco-users` WHERE `username` LIKE :user LIMIT 1;");
         $query->bindParam(':user', $username);
-        $query->bindParam(':pass', $password);
 
         //execute the query and fetch the results
         $query->execute();
-        $results = $query->fetchAll();
+        $results = $query->fetch(PDO::FETCH_OBJ);
 
         //if results are not empty, compare with user provided information
         if (!empty($results)) {
-          foreach ($results as $key => $value) {
-            //if username and password match, then return true
-            if (($username == $value["username"] && $password == $value["passwd"])) {
-              return true;
-            }
+          //if username and password match, then return true
+          if (($password == $results->passwd)) {
+            return true;
           }
         }
       } catch (PDOException $e) {
@@ -65,12 +62,15 @@
         $query->bindParam(":element", $element);
   			$query->execute();
 
-  			$results = $query->fetchAll();
+  			$results = $query->fetch(PDO::FETCH_OBJ);
 
-        return $results;
+        if(!empty($results))
+          return $results;
+
   		}catch(PDOException $e) {
   			return($e->getMessage());
   		}
+      return 0;
     }
 
   }

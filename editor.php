@@ -13,10 +13,13 @@
   getAdminNav();
   //checks of an element has been specified and display the editor menu for it
   if (isset($_GET["element"])) {
-    $element = Loco_Query::getCertainElement($_GET["element"]);?>
-    <form action="" method="POST">
-    <textarea name="meta-data"><?php echo($element[0]["data"]);?></textarea>
-    </form>
-    <?php
+    $element = Loco_Query::getCertainElement($_GET["element"]);
+    if(!empty($element)):?>
+      <h1><?php echo($element->type); ?></h1>
+      <form action="update.php" method="POST">
+      <textarea name="meta-data"><?php echo($element->data);?></textarea>
+      </form>
+      <button type="submit" value="Submit">Update Page</button>
+  <?php endif;
   }
  ?>
