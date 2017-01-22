@@ -1,3 +1,5 @@
 #Ignore sass cache
 theme/.sass-cache
 core/styles/.sass-cache
+theme/.sass-cache/*
+core/styles/.sass-cache/*
