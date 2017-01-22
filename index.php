@@ -3,7 +3,7 @@
 	require("page.php");
 	require("core/head.php");
 
-	getHead(THEME_STYLES_URL);
+	getHead(THEME_STYLES_URL, THEME_NAME);
 
 	//call header
 	require("header.php");

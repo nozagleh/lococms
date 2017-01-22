@@ -25,7 +25,7 @@ class Loco_Post {
 
 				if (isset($_SESSION["user"])) {
 					?>
-					<a href="editor.php?page=<?php echo($value['fk_page']) ?>">[Edit]</a>
+					<a href="core/editor.php?page=<?php echo($value['fk_page']) ?>">[Edit]</a>
 				<?php }
 			}
 		}

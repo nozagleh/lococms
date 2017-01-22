@@ -3,7 +3,7 @@
   require('query.php');
 
   if (isset($_SESSION["user"]))
-    header('location:admin.php');
+    header('location:core/admin.php');
 
   if (isset($_POST["username"]))
     checkLogin($_POST["username"], $_POST["password"]);
@@ -13,7 +13,7 @@
 
     if ($is_valid) {
       $_SESSION["user"] = $user;
-      header('location:admin.php');
+      header('location:core/admin.php');
     }
   }
 
